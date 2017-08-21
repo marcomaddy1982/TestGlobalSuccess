@@ -1,26 +1,271 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LgU-JX-Rdl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Contacts-->
+        <scene sceneID="RBN-U7-Dsb">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController storyboardIdentifier="ContactsViewController" id="IhS-rH-CDB" customClass="ContactsViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hEq-Vf-AFO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCellView" id="Tnf-t6-uhj">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tnf-t6-uhj" id="DBC-uW-vNh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IhS-rH-CDB" id="ba5-eJ-zyM"/>
+                            <outlet property="delegate" destination="IhS-rH-CDB" id="6HZ-1Z-a4z"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Contacts" id="1fg-ul-AQU"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="67h-JW-qGv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="YXh-tO-MYX">
+                            <connections>
+                                <action selector="cancelWithSender:" destination="IhS-rH-CDB" id="XbM-cR-sAf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Cjz-AX-HkB" kind="show" identifier="ContactsToChatSegue" id="Kxq-hU-RI6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFN-AR-TQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2729" y="21"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="n1l-aW-vZR">
+            <objects>
+                <tableViewController storyboardIdentifier="ChatsViewController" id="9km-eY-mtT" customClass="ChatsViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ltu-gt-fkZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ChatCellView" id="kO0-w7-C9J">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kO0-w7-C9J" id="EiV-3M-kwp">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9km-eY-mtT" id="H0j-hy-4Nm"/>
+                            <outlet property="delegate" destination="9km-eY-mtT" id="zAT-bJ-ZTk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Chats" id="xoU-3q-Cju">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mgW-mn-D4O">
+                            <connections>
+                                <segue destination="y0W-3M-OUg" kind="presentation" id="PhU-nw-2iA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Cjz-AX-HkB" kind="show" identifier="ChatsToChatSegue" id="zw2-nP-bDr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5us-VA-RsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="22"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="bUT-AN-lwF">
+            <objects>
+                <viewController id="Cjz-AX-HkB" customClass="ChatViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Jf-gZ-vhA"/>
+                        <viewControllerLayoutGuide type="bottom" id="oaL-3w-Nfq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C44-A2-LMY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfi-f8-PzW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="852" y="939"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="akk-Ab-716">
+            <objects>
+                <navigationController id="L0o-LS-MU8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chats" id="N86-Yc-SnK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnu-Xm-MKK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9km-eY-mtT" kind="relationship" relationship="rootViewController" id="CAC-Rm-c9K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHK-lz-Ynh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142" y="22"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="b1g-B7-mV8">
+            <objects>
+                <navigationController id="y0W-3M-OUg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" id="eQ2-hy-esJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3zl-4y-O0U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IhS-rH-CDB" kind="relationship" relationship="rootViewController" id="Z4e-S1-4gu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIO-2L-Ldx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762" y="24"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="qkt-Uj-r18">
+            <objects>
+                <viewController id="PKh-CX-z8l" customClass="LoginViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KnM-oS-oN9"/>
+                        <viewControllerLayoutGuide type="bottom" id="suc-4Y-tXx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q0f-kI-U1B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ssh-hF-TF7" userLabel="Label - Title">
+                                <rect key="frame" x="0.0" y="106" width="375" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="351" id="66R-cz-BJk"/>
+                                    <constraint firstAttribute="height" constant="58" id="g6v-hr-LZY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="42"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.70588235290000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="66R-cz-BJk"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIS-zf-CYf" userLabel="Button - Login">
+                                <rect key="frame" x="78" y="569" width="219" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="N52-MG-oE2"/>
+                                    <constraint firstAttribute="height" constant="50" id="YFI-07-pza"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Login anonymously">
+                                    <color key="titleColor" red="0.62745098040000002" green="0.70588235290000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressLoginButton:" destination="PKh-CX-z8l" eventType="touchUpInside" id="WKI-Mk-QvO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a Nickname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQV-45-P9A" userLabel="TextField - Name">
+                                <rect key="frame" x="78" y="503" width="219" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PKh-CX-z8l" id="bHg-GN-Pmw"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lQV-45-P9A" firstAttribute="height" secondItem="DIS-zf-CYf" secondAttribute="height" id="AkZ-vU-HAI"/>
+                            <constraint firstItem="lQV-45-P9A" firstAttribute="width" secondItem="DIS-zf-CYf" secondAttribute="width" id="GEO-z6-klj"/>
+                            <constraint firstItem="Ssh-hF-TF7" firstAttribute="centerX" secondItem="q0f-kI-U1B" secondAttribute="centerX" id="Syu-89-hAJ"/>
+                            <constraint firstItem="DIS-zf-CYf" firstAttribute="centerX" secondItem="Ssh-hF-TF7" secondAttribute="centerX" id="VFg-s5-zGb"/>
+                            <constraint firstItem="suc-4Y-tXx" firstAttribute="top" secondItem="DIS-zf-CYf" secondAttribute="bottom" constant="48" id="YAM-8C-dA2"/>
+                            <constraint firstItem="Ssh-hF-TF7" firstAttribute="top" secondItem="KnM-oS-oN9" secondAttribute="bottom" constant="86" id="ZVg-Qc-2Gi"/>
+                            <constraint firstItem="DIS-zf-CYf" firstAttribute="top" secondItem="lQV-45-P9A" secondAttribute="bottom" constant="16" id="qG9-p2-PlC"/>
+                            <constraint firstItem="lQV-45-P9A" firstAttribute="centerX" secondItem="DIS-zf-CYf" secondAttribute="centerX" id="wt3-7w-oot"/>
+                            <constraint firstItem="Ssh-hF-TF7" firstAttribute="width" secondItem="q0f-kI-U1B" secondAttribute="width" id="xTt-IV-rvY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomLayoutGuideConstraint" destination="YAM-8C-dA2" id="D2o-FK-eQz"/>
+                        <outlet property="buttonLogin" destination="DIS-zf-CYf" id="SmY-hg-red"/>
+                        <outlet property="textName" destination="lQV-45-P9A" id="l4s-ig-jSQ"/>
+                        <segue destination="L0o-LS-MU8" kind="show" identifier="LogInToChatsSegue" id="pma-JL-f73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TF0-z5-x6X" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1138" y="787"/>
+        </scene>
+        <!--Container View Controller-->
+        <scene sceneID="lzq-s6-k0B">
+            <objects>
+                <viewController storyboardIdentifier="ContainerViewController" id="LgU-JX-Rdl" customClass="ContainerViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EXY-NA-R2N"/>
+                        <viewControllerLayoutGuide type="bottom" id="nF6-ub-vKW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WAb-nm-Jo2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHH-8U-IAj" userLabel="Container - Login Flow">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="PKh-CX-z8l" kind="embed" id="g3T-41-9nf"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-Cq-xZ0" userLabel="Container - Chats Flow">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="L0o-LS-MU8" kind="embed" id="Wn2-H4-RdD"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DHH-8U-IAj" firstAttribute="leading" secondItem="WAb-nm-Jo2" secondAttribute="leading" id="4mA-2h-B8H"/>
+                            <constraint firstItem="nF6-ub-vKW" firstAttribute="top" secondItem="EA4-Cq-xZ0" secondAttribute="bottom" id="8LT-zJ-5w5"/>
+                            <constraint firstItem="EA4-Cq-xZ0" firstAttribute="top" secondItem="WAb-nm-Jo2" secondAttribute="top" id="EEm-vi-45t"/>
+                            <constraint firstAttribute="trailing" secondItem="DHH-8U-IAj" secondAttribute="trailing" id="QJ6-08-WmU"/>
+                            <constraint firstItem="EA4-Cq-xZ0" firstAttribute="leading" secondItem="WAb-nm-Jo2" secondAttribute="leading" id="ToS-kU-7PA"/>
+                            <constraint firstAttribute="trailing" secondItem="EA4-Cq-xZ0" secondAttribute="trailing" id="VZL-er-j2z"/>
+                            <constraint firstItem="nF6-ub-vKW" firstAttribute="top" secondItem="DHH-8U-IAj" secondAttribute="bottom" id="bO4-Io-iJO"/>
+                            <constraint firstItem="DHH-8U-IAj" firstAttribute="top" secondItem="WAb-nm-Jo2" secondAttribute="top" id="bjT-hg-D3L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="viewContainerChatsFlow" destination="EA4-Cq-xZ0" id="7y7-6K-foK"/>
+                        <outlet property="viewContainerLoginFlow" destination="DHH-8U-IAj" id="qGt-dP-xwn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHO-Xf-grD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2207.1999999999998" y="20.239880059970016"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kxq-hU-RI6"/>
+        <segue reference="Wn2-H4-RdD"/>
+    </inferredMetricsTieBreakers>
 </document>
